@@ -1,0 +1,51 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory app:title="@string/conf_host_details_header">
+
+        <EditTextPreference
+            app:key="host_url"
+            app:title="@string/conf_host_url"
+            app:defaultValue="https://yourserver:443"
+            app:useSimpleSummaryProvider="true" />
+
+        <EditTextPreference
+            app:key="door_response"
+            app:title="@string/conf_door_response"
+            app:defaultValue="0"
+            app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/conf_actions_header">
+
+        <EditTextPreference
+            app:key="trigger_param"
+            app:title="@string/conf_trigger_param"
+            app:defaultValue="/?openCarportDoor"
+            app:useSimpleSummaryProvider="true" />
+
+        <EditTextPreference
+            app:key="status_param"
+            app:title="@string/conf_status_param"
+            app:defaultValue="/?getDoorStatus"
+            app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/conf_polling_header">
+
+        <EditTextPreference
+            app:key="check_interval"
+            app:title="@string/conf_check_interval"
+            app:defaultValue="5"
+            app:useSimpleSummaryProvider="true" />
+
+        <EditTextPreference
+            app:key="service_interval"
+            app:title="@string/conf_service_interval"
+            app:defaultValue="15"
+            app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

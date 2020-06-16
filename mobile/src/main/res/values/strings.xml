@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">Door Manager</string>
+    <string name="pkg_name">Carport Door Manager</string>
+
+    <!--    Main Screen-->
+    <string name="gui_opendoor">START / STOP</string>
+    <string name="gui_closed">Closed</string>
+    <string name="gui_doorstatus">Door Status</string>
+    <string name="gui_fail">Failed</string>
+    <string name="gui_open">Open</string>
+    <string name="gui_sending">Sending trigger</string>
+    <string name="gui_sent">Trigger sent</string>
+    <string name="gui_settings">Settings</string>
+    <string name="gui_settings_tooltip">Opens the Settings Screen</string>
+    <string name="gui_unknown">Unknown</string>
+
+    <!--    Toast notifications-->
+    <string name="toast_fail">Unable to get status of door</string>
+    <string name="toast_open">Door is open</string>
+    <string name="toast_service">Door Watch Service</string>
+    <string name="toast_title">Carport Door Warning</string>
+
+    <!--    Settings Screen-->
+    <string name="conf_settings_screen">Settings Screen</string>
+    <string name="conf_host_details_header">Host Details</string>
+    <string name="conf_host_url">Full Server URL (no trailing slash)</string>
+    <string name="conf_door_response">Door Open Indicator</string>
+    <string name="conf_polling_header">Polling Settings</string>
+    <string name="conf_check_interval">Status Check Interval (sec)</string>
+    <string name="conf_service_interval">Background Status Check Interval (min)</string>
+    <string name="conf_actions_header">Parameters</string>
+    <string name="conf_trigger_param">Trigger (include leading slash)</string>
+    <string name="conf_status_param">Status (include leading slash)</string>
+</resources>
