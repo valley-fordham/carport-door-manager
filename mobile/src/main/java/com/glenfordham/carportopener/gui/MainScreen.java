@@ -2,7 +2,6 @@ package com.glenfordham.carportopener.gui;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -25,9 +24,6 @@ public class MainScreen extends Activity {
 
     private boolean statusCheckRunning = true;
 
-    // allow access of application settings to classes without a context
-    public static SharedPreferences preferences;
-
     /*
      * Activity
      */
@@ -37,7 +33,6 @@ public class MainScreen extends Activity {
 
         // Set up configuration
         PreferenceManager.setDefaultValues(this, R.xml.root_preferences, false);
-        preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         setContentView(R.layout.main_activity);
         txtTriggerStatus = findViewById(R.id.txt_trigger_status);

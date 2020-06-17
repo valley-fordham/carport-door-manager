@@ -2,15 +2,16 @@ package com.glenfordham.carportopener.carport;
 
 import android.app.Service;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.IBinder;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
+import androidx.preference.PreferenceManager;
 
 import com.glenfordham.carportopener.ErrorTag;
 import com.glenfordham.carportopener.R;
-import com.glenfordham.carportopener.gui.MainScreen;
 import com.glenfordham.carportopener.gui.SettingsScreen;
 import com.glenfordham.carportopener.gui.notifications.Toaster;
 import com.glenfordham.carportopener.gui.notifications.channels.Channel;
@@ -33,10 +34,11 @@ public class DoorStatusService extends Service {
     private void startTimer() {
         stopTimer();
         mTimer = new Timer();
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         // Schedule task to run every few minutes
         int serviceInterval;
         try {
-            serviceInterval = Integer.parseInt(Objects.requireNonNull(MainScreen.preferences.getString(SettingsScreen.KEY_PREF_SERVICE_INTERVAL, "15")));
+            serviceInterval = Integer.parseInt(Objects.requireNonNull(preferences.getString(SettingsScreen.KEY_PREF_SERVICE_INTERVAL, "15")));
         } catch (Exception e) {
             serviceInterval = 15;
         }

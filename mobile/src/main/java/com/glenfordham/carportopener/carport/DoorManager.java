@@ -1,6 +1,9 @@
 package com.glenfordham.carportopener.carport;
 
+import android.content.SharedPreferences;
 import android.util.Log;
+
+import androidx.preference.PreferenceManager;
 
 import com.glenfordham.carportopener.ErrorTag;
 import com.glenfordham.carportopener.gui.MainScreen;
@@ -34,7 +37,7 @@ public class DoorManager {
             public synchronized void run() {
                 try {
                     while (mainScreen.statusCheckIsRunning()) {
-                        Boolean doorOpen = door.isDoorOpen();
+                        Boolean doorOpen = door.isDoorOpen(mainScreen);
                         if (doorOpen == null) {
                             mainScreen.setDoorStatusToUnknown();
                         } else if (doorOpen) {
@@ -43,9 +46,10 @@ public class DoorManager {
                             mainScreen.setDoorStatusToClosed();
                         }
                         // Sleep for a time-period before checking status again
+                        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(mainScreen);
                         int sleepInterval;
                         try {
-                            sleepInterval = Integer.parseInt(Objects.requireNonNull(MainScreen.preferences.getString(SettingsScreen.KEY_PREF_STATUS_INTERVAL, "5")));
+                            sleepInterval = Integer.parseInt(Objects.requireNonNull(preferences.getString(SettingsScreen.KEY_PREF_STATUS_INTERVAL, "5")));
                         } catch (Exception e) {
                             sleepInterval = 5;
                         }
@@ -76,7 +80,7 @@ public class DoorManager {
         }
         Thread toggleDoorThread = new Thread(new Runnable() {
             public void run() {
-                boolean triggerSucceeded = door.sendDoorTrigger();
+                boolean triggerSucceeded = door.sendDoorTrigger(mainScreen);
                 if (mainScreen != null) {
                     if (triggerSucceeded) {
                         mainScreen.setTriggerStatusToSuccess();
@@ -102,7 +106,7 @@ public class DoorManager {
      * @return : true/false, or null if an HTTP error occurs
      */
     synchronized Boolean isDoorOpen() {
-        return door.isDoorOpen();
+        return door.isDoorOpen(mainScreen);
     }
 
     // Singleton
