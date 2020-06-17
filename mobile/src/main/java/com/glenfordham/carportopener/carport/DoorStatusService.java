@@ -68,7 +68,7 @@ public class DoorStatusService extends Service {
                     try {
                         Toaster toaster = new Toaster(getApplicationContext());
                         // Retrieve the door status, and display a notification if error response or door is open
-                        Boolean doorOpen = DoorManager.getInstance().isDoorOpen();
+                        Boolean doorOpen = DoorManager.getInstance().isDoorOpen(getApplicationContext());
                         if (doorOpen == null) {
                             toaster.makeToast(
                                     getResources().getString(R.string.toast_title),

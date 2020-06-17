@@ -1,5 +1,6 @@
 package com.glenfordham.carportopener.carport;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 
@@ -103,10 +104,11 @@ public class DoorManager {
 
     /**
      * Makes a door status request and returns the response
+     * @param context : context required for preference retrieval, if not provided will attempt to use MainScreen context
      * @return : true/false, or null if an HTTP error occurs
      */
-    synchronized Boolean isDoorOpen() {
-        return door.isDoorOpen(mainScreen);
+    synchronized Boolean isDoorOpen(Context context) {
+        return door.isDoorOpen((context != null ? context : mainScreen));
     }
 
     // Singleton
