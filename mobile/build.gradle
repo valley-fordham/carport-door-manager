@@ -20,9 +20,14 @@ android {
 }
 
 static def gitCommitNumber() {
-    def cmd = "git rev-list --count master" //this should be changed if branching occurs
-    def proc = cmd.execute()
-    return  proc.text.trim().toInteger()
+    def getCurrentBranch = "git rev-parse --abbrev-ref HEAD"
+    if (getCurrentBranch == "master") {
+        def cmd = "git rev-list --count master" //this should be changed if branching occurs
+        def proc = cmd.execute()
+        return  proc.text.trim().toInteger()
+    } else {
+        return 1
+    }
 }
 
 dependencies {
