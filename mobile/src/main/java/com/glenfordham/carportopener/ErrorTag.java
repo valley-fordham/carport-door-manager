@@ -1,6 +1,6 @@
 package com.glenfordham.carportopener;
 
-public enum ErrorTag {
+public enm ErrorTag {
     BACKGROUND("BackgroundService"),
     HOMESCREEN("HomeScreen"),
     THREAD_PROTECT("ThreadProtection");
