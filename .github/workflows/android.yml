@@ -18,6 +18,6 @@ jobs:
     - name: Make Gradle executable
       run: chmod +x ./gradlew
     - name: Fix Gradle
-      run: ./gradle wrapper
+      run: gradle wrapper
     - name: Build with Gradle
       run: ./gradlew build
