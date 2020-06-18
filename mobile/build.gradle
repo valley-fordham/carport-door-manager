@@ -20,7 +20,7 @@ android {
 }
 
 static def gitCommitNumber() {
-    String commitNumber = "git rev-list --count master".execute().text.toString()
+    String commitNumber = "git rev-list --count HEAD --no-merges".execute().text.toString()
     if (commitNumber.trim().isEmpty()) {
         return 0
     } else {
@@ -43,4 +43,11 @@ dependencies {
     implementation files('libs/commons-logging-1.1.1.jar')
     implementation files('libs/google-http-client-android-1.23.0.jar')
     implementation files('libs/httpcore-4.0.1.jar')
+}
+
+
+task printVersionName {
+    doLast {
+        println android.defaultConfig.versionName
+    }
 }
