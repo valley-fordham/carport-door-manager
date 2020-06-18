@@ -20,9 +20,12 @@ android {
 }
 
 static def gitCommitNumber() {
-    def cmd = "git rev-list --count master" //this should be changed if branching occurs
-    def proc = cmd.execute()
-    return  proc.text.trim().toInteger()
+    String commitNumber = "git rev-list --count HEAD --no-merges".execute().text.toString()
+    if (commitNumber.trim().isEmpty()) {
+        return 0
+    } else {
+        return commitNumber.trim().toInteger()
+    }
 }
 
 dependencies {
@@ -40,4 +43,11 @@ dependencies {
     implementation files('libs/commons-logging-1.1.1.jar')
     implementation files('libs/google-http-client-android-1.23.0.jar')
     implementation files('libs/httpcore-4.0.1.jar')
+}
+
+
+task generateVersionTxt {
+    doLast {
+        file("./version.txt").text = android.defaultConfig.versionName
+    }
 }
