@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import androidx.preference.PreferenceManager;
 
+import com.glenfordham.carportopener.BuildConfig;
 import com.glenfordham.carportopener.R;
 import com.glenfordham.carportopener.carport.DoorManager;
 import com.glenfordham.carportopener.carport.DoorStatusService;
@@ -19,6 +20,7 @@ public class MainScreen extends Activity {
 
     private TextView txtDoorStatus;
     private TextView txtTriggerStatus;
+    private TextView txtVersionNumber;
 
     private DoorManager doorManager = DoorManager.getInstance();
 
@@ -31,13 +33,23 @@ public class MainScreen extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        doorManager.setHomeScreen(this);
+
         // Set up configuration
         PreferenceManager.setDefaultValues(this, R.xml.root_preferences, false);
 
+        // Render screen
         setContentView(R.layout.main_activity);
-        txtTriggerStatus = findViewById(R.id.txt_trigger_status);
+
+        ImageView btnSettings = findViewById(R.id.btn_settings);
+        btnSettings.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(MainScreen.this, SettingsScreen.class);
+                startActivity(intent);
+            }
+        });
+
         txtDoorStatus = findViewById(R.id.txt_door_status);
-        doorManager.setHomeScreen(this);
 
         Button btnStartStop = findViewById(R.id.btn_opendoor);
         btnStartStop.setOnClickListener(new View.OnClickListener() {
@@ -47,13 +59,10 @@ public class MainScreen extends Activity {
             }
         });
 
-        ImageView btnSettings = findViewById(R.id.btn_settings);
-        btnSettings.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent intent = new Intent(MainScreen.this, SettingsScreen.class);
-                startActivity(intent);
-            }
-        });
+        txtTriggerStatus = findViewById(R.id.txt_trigger_status);
+
+        txtVersionNumber = findViewById(R.id.lbl_version_number);
+        txtVersionNumber.setText(getString(R.string.gui_version, BuildConfig.VERSION_NAME));
 
         startForegroundService(new Intent(this, DoorStatusService.class));
     }

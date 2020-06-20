@@ -86,4 +86,16 @@
 		app:layout_constraintRight_toRightOf="@+id/btn_opendoor"
 		app:layout_constraintTop_toTopOf="parent" />
 
+	<TextView
+		android:id="@+id/lbl_version_number"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text=""
+		android:textColor="#505050"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toEndOf="@+id/txt_trigger_status"
+		app:layout_constraintTop_toBottomOf="@+id/txt_trigger_status"
+		app:layout_constraintHorizontal_bias=".75" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
