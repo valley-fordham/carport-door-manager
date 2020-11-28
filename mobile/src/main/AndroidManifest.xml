@@ -21,6 +21,9 @@
             android:name=".gui.SettingsScreen"
             android:label="@string/conf_settings_screen"
             android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.glenfordham.carportopener.gui.MainScreen" />
         </activity>
         <activity
             android:name=".gui.MainScreen"

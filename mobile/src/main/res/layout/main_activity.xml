@@ -87,8 +87,9 @@
 		android:textColor="#505050"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toEndOf="@+id/txt_trigger_status"
+		app:layout_constraintHorizontal_bias="0.9"
+		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toBottomOf="@+id/txt_trigger_status"
-		app:layout_constraintHorizontal_bias=".75" />
+		app:layout_constraintVertical_bias="0.5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -41,9 +41,11 @@ public class MainScreen extends Activity {
         // Render screen
         setContentView(R.layout.main_activity);
 
-        ImageView btnSettings = findViewById(R.id.btn_settings);
+        final ImageView btnSettings = findViewById(R.id.btn_settings);
         btnSettings.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                // Apply color filter to show button feedback
+                btnSettings.setColorFilter(Color.argb(255, 255, 255, 255));
                 Intent intent = new Intent(MainScreen.this, SettingsScreen.class);
                 startActivity(intent);
             }
